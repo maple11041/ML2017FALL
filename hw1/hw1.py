@@ -23,7 +23,7 @@ def getTestData(feature1D, feature2D, df2):
 
 
 if __name__ == '__main__':
-    feature1D = ['PM2.5', 'PM10', 'O3', 'SO2']
+    feature1D = ['PM2.5', 'PM10', 'O3', 'SO2', 'WS_HR', 'WIND_SPEED']
     feature2D = ['PM2.5', 'PM10', 'O3', 'SO2']
     df2 = pd.read_csv(sys.argv[1], encoding='big5', header=None)
     X_test = getTestData(feature1D, feature2D, df2)
