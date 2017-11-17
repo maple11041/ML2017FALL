@@ -2,7 +2,7 @@ from keras.utils import np_utils
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
-from keras.callbacks import ModelCheckpoint
+# from keras.callbacks import ModelCheckpoint
 from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import sys
@@ -69,10 +69,10 @@ def main():
         horizontal_flip=True,  # randomly flip images
         vertical_flip=False)
     datagen.fit(X_train)
-    checkpointer = ModelCheckpoint(filepath='./checkpoint/check.hdf5', verbose=1, save_best_only=True, monitor='acc')
+    # checkpointer = ModelCheckpoint(filepath='./checkpoint/check.hdf5', verbose=1, save_best_only=True, monitor='acc')
     model.fit_generator(datagen.flow(X_train, Y_train, batch_size=batch_size),
                         steps_per_epoch=int(np.ceil(X_train.shape[0] / float(batch_size))),
-                        epochs=nb_epoch, callbacks=[checkpointer])
+                        epochs=nb_epoch)
     model_json = model.to_json()
     with open("model/model.json", "w") as json_file:
         json_file.write(model_json)
