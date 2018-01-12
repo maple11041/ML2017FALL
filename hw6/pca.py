@@ -20,7 +20,7 @@ pics = os.listdir(filepath)
 image = np.ndarray([len(pics), 600 * 600 * 3], dtype='float')
 
 for i, img in enumerate(pics):
-    photo = filepath + img
+    photo = os.path.join(filepath, img)
     image[i] = io.imread(photo).reshape(600 * 600 * 3)
 
 
